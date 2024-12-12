@@ -17,7 +17,11 @@ public class EnvConfig {
         return instance;
     }
 
+    //Token
 
+    public String getSecretToken() {
+        return getProperty("SECRET_TOKEN");
+    }
     //Mysql
     public String getUrlMysql() {
         return getProperty("MYSQL_URL");
