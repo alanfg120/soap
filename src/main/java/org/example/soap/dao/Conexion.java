@@ -3,12 +3,11 @@ package org.example.soap.dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+import org.example.soap.config.EnvConfig;
+
 public class Conexion {
 
-    private final String BD = "Archivos";
-    private final String USER = "root";
-    private final String PASSWORD = "mysql";
-    private final String URL = "jdbc:mysql://181.79.9.72:6447/" + BD;
+
 
     public Conexion() {
     }
@@ -17,8 +16,9 @@ public class Conexion {
         Connection con = null;
         try {
             // Cargar el driver
+            EnvConfig envs = EnvConfig.getInstance();
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection(this.URL, this.USER, this.PASSWORD);
+            con = DriverManager.getConnection(envs.getUrlMysql(),envs.getUserMysql(),envs.getPasswordMysql());
         } catch (Exception e) {
             System.out.println(e.getMessage());
             throw new RuntimeException("Error en la conexión con la base de datos: " + e.getMessage(), e);
