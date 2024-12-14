@@ -45,7 +45,7 @@ public class FileDAO {
         List<File> fileList = new ArrayList<>();
         try {
             PreparedStatement ps = accessBD.prepareStatement(
-                    "SELECT id, uuid, namefile, hash, metadata, archivo FROM file LIMIT 10");
+                    "SELECT id, uuid, namefile, hash, metadata, archivo FROM file LIMIT 100");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 File fileDTO = new File();
